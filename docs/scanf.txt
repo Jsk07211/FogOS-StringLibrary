@@ -10,13 +10,16 @@ DESCRIPTION
 	scanf() reads input from the standard input stream stdin
 
 	scanf() currently supports the following formats:
-	* %d, if an int is to be stored into an int *
+	* %d, if an int is to be stored into an int * 
 
 	* %s, if a string is to be stored in a char *
 
 	The programmer is responsible for ensuring that the formats in the format string 
 	corresponds to the right type of buffer, and that the correct number of buffers
-	has been provided in the arguments.
+	has been provided in the arguments. 
+
+	The range for integers is: 0 <= x < 1,000,000,000 to prevent integer overflow
+	without strtol or strtoll.
 
 RETURN VALUE
 	On success, these functions return the number of input items successfuly matched 

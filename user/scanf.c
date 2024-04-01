@@ -54,7 +54,7 @@ scanf(const char *restrict format, ...)
 				offset = strspn(buf, digits);
 
 				// Convert str to int if input is valid sequence of digits (not too short, not too long)
-				if (offset > 0 && offset < 11) {
+				if (offset > 0 && offset < 10) {
 					char temp[offset + 1];
 					memset(temp, 0, offset + 1);
 					strncpy(temp, buf, offset);

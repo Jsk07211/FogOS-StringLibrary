@@ -73,10 +73,6 @@ scanf(const char *restrict format, ...)
 
 				// No buffer space allocated, not successfully copied
 				if (s == 0) {
-					s = malloc(8);
-					memset(s, 0, 8);
-					strncpy(s, "(null)", 8);
-
 					// early return since error is hit
 					va_end(ap);
 					return success;	

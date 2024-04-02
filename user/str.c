@@ -67,31 +67,33 @@ int main(void) {
 	printf("\nstrtok:\n");
     char strtokstr[] = "first second third";
     char *strtoktoken = strtok(strtokstr, " ");
-    printf("%s\n", strtoktoken);
+    while (strtoktoken != 0) {
+    	printf("%s\n", strtoktoken);
+    	strtoktoken = strtok(0, " ");
+    }
+    // char *strtoktoken = strtok(strtokstr, " ");
+    // printf("%s\n", strtoktoken);
 
 	// strtok_r
 	printf("\nstrtok_r:\n");
-	char str[] = "Hello, World! Geeks for Geeks.";
-    const char outer_delimiters[] = "!.";
-    const char inner_delimiters[] = " ,";
- 
+	char str[] = "First,sentence! Second sentence? Third-sentence.";
+    char outer_delims[] = "!?.";
+    char inner_delims[] = " ,-";
     char* token;
-    char* outer_saveptr = 0;
-    char* inner_saveptr = 0;
- 
-    token = strtok_r(str, outer_delimiters, &outer_saveptr);
- 
+    char* outer_ptr = 0;
+    char* inner_ptr = 0;
+    
+    token = strtok_r(str, outer_delims, &outer_ptr);
     while (token != 0) {
         printf("Outer Token: %s\n", token);
- 
-        char* inner_token = strtok_r(token, inner_delimiters, &inner_saveptr);
+        char* inner_token = strtok_r(token, inner_delims, &inner_ptr);
  
         while (inner_token != 0) {
             printf("Inner Token: %s\n", inner_token);
-            inner_token = strtok_r(0, inner_delimiters, &inner_saveptr);
+            inner_token = strtok_r(0, inner_delims, &inner_ptr);
         }
  
-        token = strtok_r(0, outer_delimiters, &outer_saveptr);
+        token = strtok_r(0, outer_delims, &outer_ptr);
     }
 
     // strsep

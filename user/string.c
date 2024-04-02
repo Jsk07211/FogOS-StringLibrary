@@ -136,7 +136,7 @@ char
 
 char
 *strtok(char *restrict str, const char *restrict sep) {
-	char *last;
+	static char *last;
 	return strtok_r(str, sep, &last);
 }
 

@@ -120,12 +120,16 @@ int main(void) {
 	char *initialised1 = malloc(128);
 	memset(initialised0, 0, 128);
 	memset(initialised1, 0, 128);
+
+	printf("init0: %x, init1: %x\n", initialised0, initialised1);
 	
 	printf("Input three strings(space separated): ");
-	result = scanf("%s %s %s", initialised0, uninitialised,initialised1);
+	result = scanf("%s %s %s", initialised0, uninitialised, initialised1);
 	printf("%d %s %s %s\n", result, initialised0, uninitialised, initialised1);
 
 	free(initialised0);
 	free(initialised1);
+
+	malloc_leaks();
 	return 0;
 }

@@ -1,3 +1,19 @@
+#define NULL ((void *) 0)
+
+#define bool _Bool
+#define true 1
+#define false 0
+
+#define SEEK_SET        0
+#define STDIN_FILENO    0
+#define FSM_FIRST_FIT   0
+#define SEEK_CUR        1
+#define STDOUT_FILENO   1
+#define FSM_BEST_FIT    1
+#define SEEK_END        2
+#define STDERR_FILENO   2
+#define FSM_WORST_FIT   2
+
 struct stat;
 
 // system calls
@@ -36,8 +52,17 @@ int fgets(int fd, char*, int max);
 int getline(char **lineptr, uint *n, int fd);
 uint strlen(const char*);
 void* memset(void*, int, uint);
-void* malloc(uint);
-void free(void*);
 int atoi(const char*);
 int memcmp(const void *, const void *, uint);
 void *memcpy(void *, const void *, uint);
+
+// umalloc.c
+void malloc_print(void);
+void malloc_leaks(void);
+void malloc_scribble(void);
+void *malloc(uint);
+void *calloc(uint, uint);
+void *realloc(void*, uint);
+void free(void*);
+void malloc_name(void*, char*);
+void malloc_setfsm(int);

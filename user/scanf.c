@@ -15,8 +15,10 @@ scanf(const char *restrict format, ...)
     int bytes_read = getline(&buf, &sz, 0);
     char *copy = buf;
 
-	if (bytes_read < 0)
-			return -1;
+	if (bytes_read < 0) {
+	  free(buf);
+	  return -1;
+	}
 			
 	// Conventional name for va_list object
 	va_list ap;
@@ -75,6 +77,7 @@ scanf(const char *restrict format, ...)
 				if (s == 0) {
 					// early return since error is hit
 					va_end(ap);
+					free(copy);
 					return success;	
 				} else {
 					// scanf stops reading when whitespace
